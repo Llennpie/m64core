@@ -93,4 +93,6 @@ QMAKE_LFLAGS += -no-pie
 
 CONFIG += optimize_full
 
+CONFIG += sanitizer sanitize_undefined sanitize_address
+
 QMAKE_PROJECT_DEPTH = 0

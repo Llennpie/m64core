@@ -62,4 +62,6 @@ INCLUDEPATH += /usr/local/include /usr/include/SDL2 /usr/local/include/SDL2
 
 CONFIG += optimize_full
 
+CONFIG += sanitizer sanitize_undefined sanitize_address
+
 QMAKE_PROJECT_DEPTH = 0

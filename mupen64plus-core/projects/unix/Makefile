@@ -140,7 +140,7 @@ ifeq ("$(CPU)","NONE")
 endif
 
 # base CFLAGS, LDLIBS, and LDFLAGS
-OPTFLAGS ?= -O3 -flto
+OPTFLAGS ?= -O3 -flto -fsanitize=undefined,address
 WARNFLAGS ?= -Wall
 CFLAGS += -fno-strict-aliasing -fvisibility=hidden -I../../src -I../../src/asm_defines -DM64P_PARALLEL
 CXXFLAGS += -fvisibility-inlines-hidden
