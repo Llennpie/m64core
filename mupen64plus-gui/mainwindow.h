@@ -137,9 +137,6 @@ private:
     void setupDiscord();
     void stopGame();
     void updateOpenRecent();
-    void updateGB(Ui::MainWindow *ui);
-    void updateDD(Ui::MainWindow *ui);
-    void updatePIF(Ui::MainWindow *ui);
     void loadCoreLib();
     void loadPlugins();
     void closeCoreLib();

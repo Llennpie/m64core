@@ -96,7 +96,8 @@ HEADERS  += mainwindow.h \
     version.h \
     discord/discord_game_sdk.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    appearance.ui
 
 QMAKE_INCDIR += api interface
 

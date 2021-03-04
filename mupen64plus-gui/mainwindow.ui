@@ -14,13 +14,18 @@
    <string>M64Core</string>
   </property>
   <widget class="QWidget" name="centralWidget"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>32</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -46,8 +51,9 @@
     </property>
     <addaction name="actionPlugin_Paths"/>
     <addaction name="actionPlugin_Settings"/>
-    <addaction name="actionController_Configuration"/>
+    <addaction name="separator"/>
     <addaction name="actionVideo_Settings"/>
+    <addaction name="actionController_Configuration"/>
     <addaction name="separator"/>
     <addaction name="actionLLE_Graphics"/>
     <addaction name="actionVI_Filter"/>
@@ -75,13 +81,6 @@
     <addaction name="actionFreeze_Camera"/>
     <addaction name="actionSoftFreeze_Camera"/>
    </widget>
-   <widget class="QMenu" name="menuNetplay">
-    <property name="title">
-     <string>Netplay</string>
-    </property>
-    <addaction name="actionCreate_Room"/>
-    <addaction name="actionJoin_Room"/>
-   </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>About</string>
@@ -90,12 +89,10 @@
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEmulation"/>
-   <addaction name="menuSettings"/>
    <addaction name="menuMachinima"/>
-   <addaction name="menuNetplay"/>
+   <addaction name="menuSettings"/>
    <addaction name="menuAbout"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen_ROM">
    <property name="text">
     <string>Open ROM</string>
@@ -108,7 +105,7 @@
   </action>
   <action name="actionPlugin_Paths">
    <property name="text">
-    <string>Plugin and Path Selection</string>
+    <string>Plugin/Path Settings</string>
    </property>
   </action>
   <action name="actionStop_Game">
@@ -183,7 +180,7 @@
   </action>
   <action name="actionController_Configuration">
    <property name="text">
-    <string>Controller Configuration</string>
+    <string>Controller Settings</string>
    </property>
   </action>
   <action name="actionToggle_Speed_Limiter">
@@ -233,20 +230,20 @@
    </property>
   </action>
   <action name="actionFreeze_Camera">
-    <property name="checkable">
-      <bool>true</bool>
-    </property>
-    <property name="text">
-      <string>Freeze Camera</string>
-    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Freeze Camera</string>
+   </property>
   </action>
   <action name="actionSoftFreeze_Camera">
-    <property name="checkable">
-      <bool>true</bool>
-    </property>
-    <property name="text">
-      <string>Soft-Freeze Camera</string>
-    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Soft-Freeze Camera</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
