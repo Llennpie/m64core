@@ -1,39 +1,33 @@
-# m64p
+# m64core
+M64Core is the first ever cross-platform emulator dedicated to *Super Mario 64* machinima.<br>
+Built with mupen64plus and Qt5.
 
-**Downloads found here: https://github.com/loganmc10/m64p/releases**
-___
+![windows](https://raw.githubusercontent.com/Llennpie/m64core/master/ss-windows10.png)
 
-Linux Dependencies (Ubuntu 18.04)
+## Requirements
+NOTE: *These have been tested on Ubuntu 20.04 and Windows 10 (MSYS2) only. Dependencies may change per distribution or OS.*
+
+#### Ubuntu 20.04
 ```
-sudo apt install qt5-default libqt5websockets5 libsdl2-2.0-0 libsdl2-net-2.0-0 libhidapi-hidraw0 libminizip1 p7zip-full
+sudo apt install qt5-default libqt5websockets5 libsdl2-2.0-0 libsdl2-net-2.0-0 libhidapi-hidraw0 libminizip1 p7zip-full libsdl2-dev libhidapi-dev
 ```
-Linux Dependencies (Manjaro/Arch)
+#### Windows 10
+Requires [MSYS2](https://www.msys2.org/). This has only been tested with MinGW 64-bit.
 ```
-sudo pacman -S --needed qt5-base qt5-websockets sdl2 sdl2_net hidapi minizip p7zip zip
-```
-Linux Dependencies (Fedora)
-```
-sudo dnf install minizip-compat mesa-libGLU hidapi p7zip qt5-qtwebsockets
+pacman -S make mingw-w64-x86_64-SDL2 mingw-w64-x86_64-qt5 mingw-w64-x86_64-gcc mingw-w64-x86_64-SDL2_net mingw-w64-x86_64-hidapi mingw-w64-x86_64-minizip p7zip mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-cmake zip
 ```
 
-Mac OSX Dependencies
+There are plans to release M64Core on **Mac OSX**.<br>
+Check [loganmc10/m64p](https://github.com/loganmc10/m64p) for dependencies.
 
-```sh
-# First, install brew: https://brew.sh/
+## Building
+```
+$ git clone https://github.com/Llennpie/m64core
+$ cd m64core
+$ ./build.sh
+```
 
-# Now, install dependencies
-brew install freetype cmake libsamplerate hidapi unixodbc libpng pkg-config sdl2_net sdl2 qt libpq
-
-# Work around brew + QT bug - https://github.com/Homebrew/legacy-homebrew/issues/29938
-# Note that you should swap out the 5.15.1 with the version of Qt that was installed above
-ln -s /usr/local/Cellar/qt/5.15.1/plugins /usr/local/plugins
-ln -s /usr/local/Cellar/qt/5.15.1/mkspecs /usr/local/mkspecs
-ln -s /usr/local/Cellar/qt/5.15.1/qmake /usr/local/bin/qmake
-```
-___
-Building:
-```
-git clone https://github.com/loganmc10/m64p.git
-cd m64p
-./build.sh
-```
+## Special Thanks
+- [mupen64plus](https://github.com/mupen64plus)
+- loganmc10 (creator of [m64p](https://m64p.github.io/) and [mupen64plus-gui](https://github.com/m64p/mupen64plus-gui))
+- GlitchyPSI (creator of [M64MM3](https://github.com/projectcomet64/M64MM))
