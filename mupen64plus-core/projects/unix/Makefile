@@ -673,7 +673,11 @@ ifeq ($(DEBUGGER), 1)
     $(SRCDIR)/debugger/dbg_decoder.c \
     $(SRCDIR)/debugger/dbg_memory.c \
     $(SRCDIR)/debugger/dbg_breakpoints.c
-  LDLIBS += /mingw64/lib/binutils/libopcodes.a /mingw64/lib/binutils/libbfd.a
+  ifeq ("$(OS)",MINGW)
+    LDLIBS += /mingw64/lib/binutils/libopcodes.a /mingw64/lib/binutils/libbfd.a
+  else
+    LDLIBS += -lopcodes -lbfd
+  endif
 
   # UGLY libopcodes version check (we check for > 2.28)
   LIBOPCODES_VERSION := $(shell $(STRINGS) --version | head -n1 | rev | cut -d ' ' -f1 | rev)

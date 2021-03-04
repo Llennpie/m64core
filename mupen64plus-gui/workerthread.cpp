@@ -76,15 +76,6 @@ void WorkerThread::run()
 
         res = launchGame(netplay_ip, netplay_port, netplay_player);
 
-
-
-        // Machinima stuff.
-
-        // To-Do: Only enable if the game is Super Mario 64.
-        w->toggleMachinimaMenu(true);
-
-
-
         emit clearDiscordActivity();
     }
 

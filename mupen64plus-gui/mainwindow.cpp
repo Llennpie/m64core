@@ -441,7 +441,6 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     setupDiscord();
-    toggleMachinimaMenu(false);
 }
 
 MainWindow::~MainWindow()
@@ -1041,13 +1040,6 @@ void MainWindow::on_actionJoin_Room_triggered()
 void MainWindow::on_actionDiscord_Comet_triggered()
 {
     QDesktopServices::openUrl(QUrl("https://discord.gg/DEyeFCPRAu"));
-}
-
-void MainWindow::toggleMachinimaMenu(bool toggle)
-{
-    // Toggles the Machinima options on or off.
-    ui->actionFreeze_Camera->setEnabled(toggle);
-    ui->actionSoftFreeze_Camera->setEnabled(toggle);
 }
 
 void MainWindow::on_actionFreeze_Camera_triggered()
