@@ -673,7 +673,10 @@ ifeq ($(DEBUGGER), 1)
     $(SRCDIR)/debugger/dbg_decoder.c \
     $(SRCDIR)/debugger/dbg_memory.c \
     $(SRCDIR)/debugger/dbg_breakpoints.c
-  ifeq ("$(OS)",MINGW)
+  
+  # This section may cause errors on Windows.
+  # For some reason these linkers won't work on MSYS2. The paths may need to be modified.
+  ifeq ($(OS), MINGW)
     LDLIBS += /mingw64/lib/binutils/libopcodes.a /mingw64/lib/binutils/libbfd.a
   else
     LDLIBS += -lopcodes -lbfd
