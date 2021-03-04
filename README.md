@@ -22,7 +22,7 @@ Check [loganmc10/m64p](https://github.com/loganmc10/m64p) for dependencies.
 
 ## Building
 ```
-$ git clone https://github.com/Llennpie/m64core
+$ git clone https://github.com/projectcomet64/m64core
 $ cd m64core
 $ ./build.sh
 ```
