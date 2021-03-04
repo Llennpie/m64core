@@ -2,7 +2,7 @@
 M64Core is the first ever cross-platform emulator dedicated to *Super Mario 64* machinima.<br>
 Built with mupen64plus and Qt5.
 
-![windows](https://raw.githubusercontent.com/Llennpie/m64core/master/ss-windows10.png)
+![ubuntu](ss-ubuntu2004.png)
 
 ## Requirements
 NOTE: *These have been tested on Ubuntu 20.04 and Windows 10 (MSYS2) only. Dependencies may change per distribution or OS.*
