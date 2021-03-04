@@ -1,8 +1,10 @@
 
+#include <iostream>
 #include "workerthread.h"
 #include "vidext.h"
 #include "mainwindow.h"
 #include "interface/core_commands.h"
+#include <QActionGroup>
 #ifndef _WIN32
 #include <QDBusConnection>
 #include <QDBusReply>
@@ -46,7 +48,7 @@ void WorkerThread::run()
     uint32_t cookieID = 0;
     QDBusInterface screenSaverInterface("org.freedesktop.ScreenSaver", "/org/freedesktop/ScreenSaver", "org.freedesktop.ScreenSaver");
     if (screenSaverInterface.isValid()) {
-        QDBusReply<uint32_t> reply = screenSaverInterface.call("Inhibit", "mupen64plus-gui", "game");
+        QDBusReply<uint32_t> reply = screenSaverInterface.call("Inhibit", "M64Core", "game");
         if (reply.isValid())
             cookieID = reply.value();
     }
@@ -65,14 +67,23 @@ void WorkerThread::run()
         memset(&timestamps, 0, sizeof(timestamps));
         QDateTime current = QDateTime::currentDateTimeUtc();
         timestamps.start = current.currentSecsSinceEpoch();
-        strcpy(assets.large_image, "6205049");
-        strcpy(assets.large_text, "https://m64p.github.io");
+        strcpy(assets.large_image, "logo");
+        strcpy(assets.large_text, "M64Core");
         activity.assets = assets;
         activity.timestamps = timestamps;
         strncpy(activity.details, rom_settings.goodname, 128);
         emit updateDiscordActivity(activity);
 
         res = launchGame(netplay_ip, netplay_port, netplay_player);
+
+
+
+        // Machinima stuff.
+
+        // To-Do: Only enable if the game is Super Mario 64.
+        w->toggleMachinimaMenu(true);
+
+
 
         emit clearDiscordActivity();
     }

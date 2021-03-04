@@ -68,12 +68,12 @@ cd $base_dir/mupen64plus-gui/build
 qmake ../mupen64plus-gui.pro
 make -j4
 if [[ $UNAME == *"MINGW"* ]]; then
-  cp $base_dir/mupen64plus-gui/build/release/mupen64plus-gui.exe $install_dir
+  cp $base_dir/mupen64plus-gui/build/release/m64core.exe $install_dir
 elif [[ $UNAME == *"Darwin"* ]]; then
-  /usr/local/Cellar/qt/$qt_version/bin/macdeployqt $base_dir/mupen64plus-gui/build/mupen64plus-gui.app
+  /usr/local/Cellar/qt/$qt_version/bin/macdeployqt $base_dir/mupen64plus-gui/build/m64core.app
   cp -a $base_dir/mupen64plus-gui/build/mupen64plus-gui.app $install_dir
 else
-  cp $base_dir/mupen64plus-gui/build/mupen64plus-gui $install_dir
+  cp $base_dir/mupen64plus-gui/build/m64core $install_dir
 fi
 
 cd $base_dir/GLideN64/src
@@ -105,22 +105,8 @@ cmake --build .
 cp mupen64plus-rsp-parallel.* $install_dir
 
 if [[ $UNAME == *"MINGW"* ]]; then
-  cd $base_dir/angrylion-rdp-plus/
-  python3 ./make_version.py
-  cd $base_dir/angrylion-rdp-plus/msvc
-  "${MSBUILD_PATH}MSBuild.exe" angrylion-plus.sln -t:plugin-mupen64plus -p:Configuration=Release -p:Platform=x64
-  cp build/Release/mupen64plus-video-angrylion-plus.dll $install_dir
-else
-  mkdir -p $base_dir/angrylion-rdp-plus/build
-  cd $base_dir/angrylion-rdp-plus/build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  cmake --build .
-  cp mupen64plus-video-angrylion-plus.* $install_dir
-fi
-
-if [[ $UNAME == *"MINGW"* ]]; then
   cd $install_dir
-  windeployqt.exe mupen64plus-gui.exe
+  windeployqt.exe m64core.exe
 
   if [[ $UNAME == *"MINGW64"* ]]; then
     my_os=win64

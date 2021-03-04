@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    QCoreApplication::setApplicationName("mupen64plus-gui");
+    QCoreApplication::setApplicationName("M64Core");
 
     QCommandLineParser parser;
     parser.addHelpOption();

@@ -2,3 +2,12 @@ mupen64plus/
 *zip
 *.dylib
 .DS_Store
+
+parallel-rsp/build
+GLideN64/projects/cmake/libmupen64plus-video-GLideN64.dll.a
+GLideN64/projects/cmake/libmupen64plus-video-GLideN64.dll
+GLideN64/projects/cmake/mupen64plus-video-GLideN64.dll
+mupen64plus-core/projects/unix/mupen64plus.dll
+mupen64plus-rsp-hle/projects/unix/mupen64plus-rsp-hle.dll
+
+mupen64plus-gui/.vscode/settings.json

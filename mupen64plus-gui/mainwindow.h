@@ -61,6 +61,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     void updateApp();
     ~MainWindow();
+    void toggleMachinimaMenu(bool toggle);
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -125,9 +126,11 @@ private slots:
 
     void on_actionJoin_Room_triggered();
 
-    void on_actionSupport_on_Patreon_triggered();
+    void on_actionDiscord_Comet_triggered();
 
-    void on_actionOpen_Discord_Channel_triggered();
+    void on_actionFreeze_Camera_triggered();
+
+    void on_actionSoftFreeze_Camera_triggered();
 
 private:
     void setupLLE();

@@ -21,6 +21,9 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 # Makefile for Mupen64Plus Core
 
+# required for memory functions to work properly
+DEBUGGER=1
+
 # detect operating system
 UNAME ?= $(shell uname -s)
 OS := NONE
@@ -670,7 +673,7 @@ ifeq ($(DEBUGGER), 1)
     $(SRCDIR)/debugger/dbg_decoder.c \
     $(SRCDIR)/debugger/dbg_memory.c \
     $(SRCDIR)/debugger/dbg_breakpoints.c
-  LDLIBS += -lopcodes -lbfd
+  LDLIBS += /mingw64/lib/binutils/libopcodes.a /mingw64/lib/binutils/libbfd.a
 
   # UGLY libopcodes version check (we check for > 2.28)
   LIBOPCODES_VERSION := $(shell $(STRINGS) --version | head -n1 | rev | cut -d ' ' -f1 | rev)

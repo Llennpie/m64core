@@ -6,7 +6,7 @@
 
 QT       += widgets websockets
 
-TARGET = mupen64plus-gui
+TARGET = m64core
 TEMPLATE = app
 
 RC_ICONS = mupen64plus.ico

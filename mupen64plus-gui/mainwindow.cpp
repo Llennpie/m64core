@@ -1,3 +1,4 @@
+#include <iostream>
 #include <QString>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -357,11 +358,7 @@ MainWindow::MainWindow(QWidget *parent) :
     gles = 0;
     ui->setupUi(this);
 
-    m_title = "mupen64plus-gui    Build Date: ";
-    m_title += __DATE__;
-    this->setWindowTitle(m_title);
-
-    QString ini_path = QDir(QCoreApplication::applicationDirPath()).filePath("mupen64plus-gui.ini");
+    QString ini_path = QDir(QCoreApplication::applicationDirPath()).filePath("m64core.ini");
     settings = new QSettings(ini_path, QSettings::IniFormat, this);
 
     if (!settings->isWritable())
@@ -444,6 +441,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     setupDiscord();
+    toggleMachinimaMenu(false);
 }
 
 MainWindow::~MainWindow()
@@ -518,7 +516,7 @@ void MainWindow::setupDiscord()
 
     DiscordCreateParams params;
     DiscordCreateParamsSetDefault(&params);
-    params.client_id = 770838334015930398LL;
+    params.client_id = 816813409081360385;
     params.flags = DiscordCreateFlags_NoRequireDiscord;
     params.event_data = &discord_app;
 
@@ -1040,14 +1038,44 @@ void MainWindow::on_actionJoin_Room_triggered()
     joinRoom->show();
 }
 
-void MainWindow::on_actionSupport_on_Patreon_triggered()
+void MainWindow::on_actionDiscord_Comet_triggered()
 {
-    QDesktopServices::openUrl(QUrl("https://www.patreon.com/m64p"));
+    QDesktopServices::openUrl(QUrl("https://discord.gg/DEyeFCPRAu"));
 }
 
-void MainWindow::on_actionOpen_Discord_Channel_triggered()
+void MainWindow::toggleMachinimaMenu(bool toggle)
 {
-    QDesktopServices::openUrl(QUrl("https://discord.gg/B5svWhR"));
+    // Toggles the Machinima options on or off.
+    ui->actionFreeze_Camera->setEnabled(toggle);
+    ui->actionSoftFreeze_Camera->setEnabled(toggle);
+}
+
+void MainWindow::on_actionFreeze_Camera_triggered()
+{
+    // Freezes or unfreezes the camera.
+    ui->actionFreeze_Camera->setChecked(false);
+
+    unsigned char freezeByte = (*DebugMemRead8)(0x8033C848);
+    if (static_cast<unsigned>(freezeByte) == 128 || static_cast<unsigned>(freezeByte) == 129) {
+        (*DebugMemWrite8)(0x8033C848, (unsigned char)(0));
+    } else {
+        (*DebugMemWrite8)(0x8033C848, (unsigned char)(128));
+        ui->actionFreeze_Camera->setChecked(true);
+    }
+}
+
+void MainWindow::on_actionSoftFreeze_Camera_triggered()
+{
+    // Soft-freezes or soft-unfreezes the camera.
+    ui->actionSoftFreeze_Camera->setChecked(false);
+
+    unsigned char softFreezeByte = (*DebugMemRead8)(0x8033B205);
+    if (static_cast<unsigned>(softFreezeByte) == 1) {
+        (*DebugMemWrite8)(0x8033B205, (unsigned char)(51));
+    } else {
+        (*DebugMemWrite8)(0x8033B205, (unsigned char)(1));
+        ui->actionSoftFreeze_Camera->setChecked(true);
+    }
 }
 
 WorkerThread* MainWindow::getWorkerThread()
@@ -1105,6 +1133,7 @@ void MainWindow::loadCoreLib()
 {
     QString corePath = settings->value("coreLibPath").toString();
     corePath.replace("$APP_PATH$", QCoreApplication::applicationDirPath());
+    corePath.replace("$CORE_PATH$", QCoreApplication::applicationDirPath() + "/Core");
 
     m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toLatin1().data());
 
@@ -1135,6 +1164,12 @@ void MainWindow::loadCoreLib()
     ConfigOpenSection =           (ptr_ConfigOpenSection) osal_dynlib_getproc(coreLib, "ConfigOpenSection");
     ConfigListParameters =        (ptr_ConfigListParameters) osal_dynlib_getproc(coreLib, "ConfigListParameters");
     ConfigGetSharedDataFilepath = (ptr_ConfigGetSharedDataFilepath) osal_dynlib_getproc(coreLib, "ConfigGetSharedDataFilepath");
+
+    CoreAddCheat = (ptr_CoreAddCheat) osal_dynlib_getproc(coreLib, "CoreAddCheat");
+    CoreCheatEnabled = (ptr_CoreCheatEnabled) osal_dynlib_getproc(coreLib, "CoreCheatEnabled");
+
+    DebugMemRead8 = (ptr_DebugMemRead8) osal_dynlib_getproc(coreLib, "DebugMemRead8");
+    DebugMemWrite8 = (ptr_DebugMemWrite8) osal_dynlib_getproc(coreLib, "DebugMemWrite8");
 
     QString qtConfigDir = settings->value("configDirPath").toString();
     qtConfigDir.replace("$APP_PATH$", QCoreApplication::applicationDirPath());
@@ -1193,6 +1228,7 @@ void MainWindow::loadPlugins()
 
     QString pluginPath = settings->value("pluginDirPath").toString();
     pluginPath.replace("$APP_PATH$", QCoreApplication::applicationDirPath());
+    pluginPath.replace("$PLUGIN_PATH$", QCoreApplication::applicationDirPath() + "/Plugins");
 
     QString lle_path;
     QString plugin_path;

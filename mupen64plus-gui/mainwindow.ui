@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>mupen64plus</string>
+   <string>M64Core</string>
   </property>
   <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
@@ -68,19 +68,32 @@
     <addaction name="separator"/>
     <addaction name="actionView_Log"/>
    </widget>
+   <widget class="QMenu" name="menuMachinima">
+    <property name="title">
+     <string>Machinima</string>
+    </property>
+    <addaction name="actionFreeze_Camera"/>
+    <addaction name="actionSoftFreeze_Camera"/>
+   </widget>
    <widget class="QMenu" name="menuNetplay">
     <property name="title">
      <string>Netplay</string>
     </property>
     <addaction name="actionCreate_Room"/>
     <addaction name="actionJoin_Room"/>
-    <addaction name="actionOpen_Discord_Channel"/>
-    <addaction name="actionSupport_on_Patreon"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <addaction name="actionDiscord_Comet"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEmulation"/>
    <addaction name="menuSettings"/>
+   <addaction name="menuMachinima"/>
    <addaction name="menuNetplay"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen_ROM">
@@ -198,14 +211,9 @@
     <string>Join Room</string>
    </property>
   </action>
-  <action name="actionSupport_on_Patreon">
+  <action name="actionDiscord_Comet">
    <property name="text">
-    <string>Support on Patreon</string>
-   </property>
-  </action>
-  <action name="actionOpen_Discord_Channel">
-   <property name="text">
-    <string>Join Discord Channel</string>
+    <string>Project Comet Discord</string>
    </property>
   </action>
   <action name="actionLLE_Graphics">
@@ -223,6 +231,22 @@
    <property name="text">
     <string>VI Filter</string>
    </property>
+  </action>
+  <action name="actionFreeze_Camera">
+    <property name="checkable">
+      <bool>true</bool>
+    </property>
+    <property name="text">
+      <string>Freeze Camera</string>
+    </property>
+  </action>
+  <action name="actionSoftFreeze_Camera">
+    <property name="checkable">
+      <bool>true</bool>
+    </property>
+    <property name="text">
+      <string>Soft-Freeze Camera</string>
+    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

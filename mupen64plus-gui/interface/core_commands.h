@@ -3,6 +3,7 @@
 
 #include "m64p_frontend.h"
 #include "m64p_config.h"
+#include "m64p_debugger.h"
 
 extern ptr_CoreStartup                 CoreStartup;
 extern ptr_CoreShutdown                CoreShutdown;
@@ -23,4 +24,10 @@ extern ptr_ConfigDeleteSection         ConfigDeleteSection;
 extern ptr_ConfigOpenSection           ConfigOpenSection;
 extern ptr_ConfigListParameters        ConfigListParameters;
 extern ptr_ConfigGetSharedDataFilepath ConfigGetSharedDataFilepath;
+
+extern ptr_CoreAddCheat                CoreAddCheat;
+extern ptr_CoreCheatEnabled            CoreCheatEnabled;
+
+extern ptr_DebugMemRead8               DebugMemRead8;
+extern ptr_DebugMemWrite8              DebugMemWrite8;
 #endif
