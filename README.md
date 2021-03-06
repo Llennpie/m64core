@@ -7,7 +7,8 @@ For installation instructions, please refer to our [wiki](https://github.com/pro
 
 ***
 
-![windows10](ss-windows10.png)<br>
+![windows](ss-windows10.png)
+![ubuntu](ss-ubuntu2004.png)<br>
 
 ## Special Thanks
 - [mupen64plus](https://github.com/mupen64plus)
