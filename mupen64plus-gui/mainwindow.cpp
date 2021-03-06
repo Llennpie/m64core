@@ -1,7 +1,10 @@
 #include <iostream>
 #include <QString>
+#include <QObject>
+#include <QFileSystemWatcher>
 #include <QFile>
 #include <QFileDialog>
+#include <QSettings>
 #include <QMessageBox>
 #include <QTextStream>
 #include <QCloseEvent>
@@ -194,6 +197,25 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     setupDiscord();
+
+    // GLideN64
+
+    watcher.addPath(QDir(QCoreApplication::applicationDirPath()).filePath("GLideN64.custom.ini"));
+    
+    QObject::connect( &watcher, &QFileSystemWatcher::fileChanged, [this]( const QString& path ) {
+        if (path == QDir(QCoreApplication::applicationDirPath()).filePath("GLideN64.custom.ini")) {
+            QSettings * iniSettings = new QSettings(path, QSettings::IniFormat);
+
+            iniSettings->beginGroup("SUPER MARIO 64");
+            iniSettings->beginGroup("video");
+            int windowedWidth = iniSettings->value("windowedWidth",640).toInt();
+            int windowedHeight = iniSettings->value("windowedHeight",480).toInt();
+            iniSettings->endGroup();
+            iniSettings->endGroup();
+
+            resizeMainWindow(windowedWidth, windowedHeight);
+        }
+    });
 }
 
 MainWindow::~MainWindow()
@@ -794,6 +816,22 @@ void MainWindow::on_actionDiscord_Comet_triggered()
 {
     QDesktopServices::openUrl(QUrl("https://discord.gg/DEyeFCPRAu"));
 }
+
+void MainWindow::on_actionReload_Window_triggered()
+{
+    QString path = QDir(QCoreApplication::applicationDirPath()).filePath("GLideN64.custom.ini");
+    QSettings * iniSettings = new QSettings(path, QSettings::IniFormat);
+
+    iniSettings->beginGroup("SUPER MARIO 64");
+    iniSettings->beginGroup("video");
+    int windowedWidth = iniSettings->value("windowedWidth",640).toInt();
+    int windowedHeight = iniSettings->value("windowedHeight",480).toInt();
+    iniSettings->endGroup();
+    iniSettings->endGroup();
+
+    resizeMainWindow(windowedWidth, windowedHeight);
+}
+
 
 void MainWindow::on_actionFreeze_Camera_triggered()
 {

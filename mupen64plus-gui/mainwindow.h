@@ -11,6 +11,7 @@ extern "C" {
 }
 #include <QMainWindow>
 #include <QSettings>
+#include <QFileSystemWatcher>
 #include <QSurfaceFormat>
 #include <QWidgetAction>
 #include <QSlider>
@@ -57,6 +58,8 @@ public:
     QThread *getRenderingThread();
     void setRenderingThread(QThread* thread);
     m64p_dynlib_handle getCoreLib();
+    QFileSystemWatcher watcher;
+    void UpdateGlideSize (const QString path);
     struct Discord_Application* getDiscordApp();
     explicit MainWindow(QWidget *parent = 0);
     void updateApp();
@@ -131,6 +134,8 @@ private slots:
     void on_actionFreeze_Camera_triggered();
 
     void on_actionSoftFreeze_Camera_triggered();
+
+    void on_actionReload_Window_triggered();
 
 private:
     void setupLLE();

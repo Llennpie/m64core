@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -36,19 +36,18 @@
      <string>File</string>
     </property>
     <addaction name="actionOpen_ROM"/>
-    <addaction name="actionSave_State"/>
-    <addaction name="actionLoad_State"/>
-    <addaction name="actionSave_State_To"/>
-    <addaction name="actionLoad_State_From"/>
-    <addaction name="separator"/>
-    <addaction name="actionTake_Screenshot"/>
-    <addaction name="separator"/>
     <addaction name="actionExit"/>
+    <addaction name="separator"/>
+    <addaction name="actionView_Log"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
-     <string>Settings</string>
+     <string>Options</string>
     </property>
+    <addaction name="actionToggle_Fullscreen"/>
+    <addaction name="actionReload_Window"/>
+    <addaction name="separator"/>
     <addaction name="actionPlugin_Paths"/>
     <addaction name="actionPlugin_Settings"/>
     <addaction name="separator"/>
@@ -60,19 +59,29 @@
    </widget>
    <widget class="QMenu" name="menuEmulation">
     <property name="title">
-     <string>Emulation</string>
+     <string>System</string>
     </property>
-    <addaction name="actionToggle_Fullscreen"/>
+    <widget class="QMenu" name="menuReset">
+     <property name="title">
+      <string>Reset</string>
+     </property>
+     <addaction name="actionSoft_Reset"/>
+     <addaction name="actionHard_Reset"/>
+    </widget>
+    <addaction name="menuReset"/>
+    <addaction name="actionPause_Game"/>
     <addaction name="separator"/>
     <addaction name="actionMute"/>
+    <addaction name="actionTake_Screenshot"/>
     <addaction name="separator"/>
-    <addaction name="actionPause_Game"/>
-    <addaction name="actionStop_Game"/>
-    <addaction name="actionHard_Reset"/>
-    <addaction name="actionSoft_Reset"/>
+    <addaction name="actionSave_State"/>
+    <addaction name="actionSave_State_To"/>
+    <addaction name="actionLoad_State"/>
+    <addaction name="actionLoad_State_From"/>
+    <addaction name="separator"/>
     <addaction name="actionToggle_Speed_Limiter"/>
     <addaction name="separator"/>
-    <addaction name="actionView_Log"/>
+    <addaction name="actionStop_Game"/>
    </widget>
    <widget class="QMenu" name="menuMachinima">
     <property name="title">
@@ -110,7 +119,7 @@
   </action>
   <action name="actionStop_Game">
    <property name="text">
-    <string>Stop Game (Escape)</string>
+    <string>End Emulation (Escape)</string>
    </property>
   </action>
   <action name="actionPlugin_Settings">
@@ -140,12 +149,12 @@
   </action>
   <action name="actionSave_State_To">
    <property name="text">
-    <string>Save State To...</string>
+    <string>Save As...</string>
    </property>
   </action>
   <action name="actionLoad_State_From">
    <property name="text">
-    <string>Load State From...</string>
+    <string>Load...</string>
    </property>
   </action>
   <action name="actionTake_Screenshot">
@@ -160,7 +169,7 @@
   </action>
   <action name="actionMute">
    <property name="text">
-    <string>Mute/Unmute (m)</string>
+    <string>Mute (m)</string>
    </property>
   </action>
   <action name="actionHard_Reset">
@@ -175,7 +184,7 @@
   </action>
   <action name="actionToggle_Fullscreen">
    <property name="text">
-    <string>Toggle Fullscreen (Alt + Return)</string>
+    <string>Fullscreen (Alt + Return)</string>
    </property>
   </action>
   <action name="actionController_Configuration">
@@ -190,7 +199,7 @@
   </action>
   <action name="actionView_Log">
    <property name="text">
-    <string>View Log</string>
+    <string>View Log...</string>
    </property>
   </action>
   <action name="actionVideo_Settings">
@@ -243,6 +252,11 @@
    </property>
    <property name="text">
     <string>Soft-Freeze Camera</string>
+   </property>
+  </action>
+  <action name="actionReload_Window">
+   <property name="text">
+    <string>Reload Window</string>
    </property>
   </action>
  </widget>
