@@ -3,7 +3,8 @@ M64Core is the first ever cross-platform emulator dedicated to *Super Mario 64* 
 Built with mupen64plus and Qt5.
 
 ## Installation
-For installation instructions, please refer to our [wiki](https://github.com/projectcomet64/m64core/wiki).
+You can download M64Core in our [releases](https://github.com/projectcomet64/m64core/releases) section.
+For compilation instructions, please refer to our [wiki](https://github.com/projectcomet64/m64core/wiki).
 
 ***
 
