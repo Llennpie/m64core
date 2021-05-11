@@ -48,11 +48,11 @@
     <addaction name="actionToggle_Fullscreen"/>
     <addaction name="actionReload_Window"/>
     <addaction name="separator"/>
-    <addaction name="actionPlugin_Paths"/>
-    <addaction name="actionPlugin_Settings"/>
-    <addaction name="separator"/>
     <addaction name="actionVideo_Settings"/>
     <addaction name="actionController_Configuration"/>
+    <addaction name="separator"/>
+    <addaction name="actionPlugin_Paths"/>
+    <addaction name="actionPlugin_Settings"/>
     <addaction name="separator"/>
     <addaction name="actionLLE_Graphics"/>
     <addaction name="actionVI_Filter"/>
@@ -164,12 +164,12 @@
   </action>
   <action name="actionPause_Game">
    <property name="text">
-    <string>Pause/Resume Game (p)</string>
+    <string>Pause/Resume (P)</string>
    </property>
   </action>
   <action name="actionMute">
    <property name="text">
-    <string>Mute (m)</string>
+    <string>Mute (M)</string>
    </property>
   </action>
   <action name="actionHard_Reset">
