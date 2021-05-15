@@ -674,12 +674,13 @@ ifeq ($(DEBUGGER), 1)
     $(SRCDIR)/debugger/dbg_memory.c \
     $(SRCDIR)/debugger/dbg_breakpoints.c
   
-  # This section may cause errors on Windows.
-  # For some reason these linkers won't work on MSYS2. The paths may need to be modified.
+  # This section may cause errors on different OS.
+  # For some reason these linkers won't work on MSYS2 or Mac OS X. The paths may need to be modified.
+  # To-do: Remove the binutils version assumption on Mac OS X.
   ifeq ($(OS), MINGW)
     LDLIBS += /mingw64/lib/binutils/libopcodes.a /mingw64/lib/binutils/libbfd.a
   else ifeq   ($(OS), OSX)
-    LDLIBS += /usr/local/opt/binutils/libopcodes.a /usr/local/opt/binutils/lib/libbfd.a
+    LDLIBS += /usr/local/Cellar/binutils/2.36.1/lib/libopcodes.a /usr/local/Cellar/binutils/2.36.1/lib/libbfd.a
   else
     LDLIBS += -lopcodes -lbfd
   endif
