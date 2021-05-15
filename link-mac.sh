@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-contents=mupen64plus/mupen64plus-gui.app/Contents
+contents=mupen64plus/m64core.app/Contents
 
 # Get files in correct directories
 mv mupen64plus/font.ttf $contents/MacOS

@@ -70,8 +70,7 @@ make -j4
 if [[ $UNAME == *"MINGW"* ]]; then
   cp $base_dir/mupen64plus-gui/build/release/m64core.exe $install_dir
 elif [[ $UNAME == *"Darwin"* ]]; then
-  /usr/local/Cellar/qt/$qt_version/bin/macdeployqt $base_dir/mupen64plus-gui/build/m64core.app
-  cp -a $base_dir/mupen64plus-gui/build/mupen64plus-gui.app $install_dir
+  cp -a $base_dir/mupen64plus-gui/build/m64core.app $install_dir
 else
   cp $base_dir/mupen64plus-gui/build/m64core $install_dir
 fi
